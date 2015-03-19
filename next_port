@@ -49,7 +49,7 @@ if [[ $MAX -lt $MIN || $MIN -lt 0 || $MAX -gt 65535 ]]; then
   exit 1
 fi
 
-PORTS=($(netstat -ta | tail -n +3 | awk {'print $4'} | cut -d : -f2))
+PORTS=($(netstat -tna | tail -n +3 | awk {'print $4'} | rev | cut -d : -f1 | rev))
 
 current=$MIN
 
